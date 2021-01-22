@@ -1,11 +1,19 @@
 <?php
     include('sql_connect.php');
+    header("Content-Security-Policy: script-src 'self'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';content=default-src 'self'">
+    
+    <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self' data: gap: 'unsafe-eval' ws: ; 
+        style-src 'self' 'unsafe-inline'; 
+        script-src https: *.example.com ;
+        media-src 'none'; 
+        font-src *;
+        connect-src *;
+        img-src 'self' data: content:;">
     <title>Bezpieczeństwo aplikacji webowych</title>
     <style>
         #comment{
@@ -31,8 +39,9 @@
         <textarea name="comment_content" placeholder="Wpisz swój komentarz" rows="6" cols="50" style="resize: none;"></textarea><br></br>
         <input type="submit" value="Wyślij komentarz" name="add_comment">
         <?php
-        header("Content-Security-Policy: script-src 'self'");
+        
         if(isset($_POST['add_comment'])){
+            
             $content=$_POST['comment_content'];
                 $query="INSERT INTO comments
                 (`content`)values
@@ -46,7 +55,4 @@
         <a href="comments.php">Strona z komentarzami</a>
     </div>
 </body>
-<script>
-
-</script>
 </html>
