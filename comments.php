@@ -1,5 +1,6 @@
 <?php
     include('sql_connect.php');
+    header("Content-Security-Policy: default-src 'self'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,9 @@
     <title>Document</title>
 </head>
 <body>
+<a href='index.php' style="text-align:center;">Strona główna</a>
     <?php
+    
         $result= $mysqli->query("SELECT * FROM comments");
         if ($result->num_rows > 0) {
             while($row=$result->fetch_assoc()){
@@ -27,7 +30,8 @@
             }
             
         }
-    echo "<br><a href='index.php'>Strona główna</a>"
+   
     ?>
+    
 </body>
 </html>
