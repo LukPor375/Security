@@ -7,12 +7,14 @@
 <head>
     <title>Bezpieczeństwo aplikacji webowych</title>
     <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; frame-src 'self'; font-src 'self'; connect-src 'self'">
 </head>
 <body>
     <div id="comment">
         <form method="POST">
         <textarea name="comment_content" placeholder="Wpisz swój komentarz" rows="6" cols="50"></textarea><br></br>
         <input type="submit" value="Wyślij komentarz" name="add_comment">
+        <?php echo header("comments.php");?>
         <?php
         if(isset($_POST['add_comment'])){
             

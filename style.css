@@ -10,10 +10,9 @@ a:link{
     text-decoration:none;
 }
 html{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100%;
 }
-table,tr{
+table{
     border: 1px solid black;
     width:100%;
 }
